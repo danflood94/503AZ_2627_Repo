@@ -24,8 +24,8 @@ of all applicable controls.
 
 | ISO/IEC 27001:2022 Annex A control | Applicable? (Yes/No/To assess) | Justification / scope | Implementation status | Owner | Policy/configuration reference | Evidence reference |
 |---|---|---|---|---|---|---|
-| A.5.15 Access control [EXAMPLE - ADAPT] | To assess | Example: determine whether access to in-scope resources needs formal authorization; write the scope-specific rationale | To assess | Group policy lead / relevant component owner | `policies/access-control-policy.md`; applicable IAM/resource policy | Access review or supported policy-test evidence |
-| A.6.3 Information security awareness, education and training [EXAMPLE - ADAPT] | To assess | Example: determine who needs security awareness and how the requirement applies to the project | To assess | Group policy lead | `policies/security-awareness-training-policy.md` | Sanitized or synthetic completion evidence |
+| A.5.15 Access control [EXAMPLE - ADAPT] | To assess | Example: determine whether access to in-scope resources needs formal authorization; write the scope-specific rationale | To assess | Group policy lead / relevant component owner | `policies/examples/access-control-policy.md`; applicable IAM/resource policy | Access review or supported policy-test evidence |
+| A.6.3 Information security awareness, education and training [EXAMPLE - ADAPT] | To assess | Example: determine who needs security awareness and how the requirement applies to the project | To assess | Group policy lead | `policies/examples/security-awareness-training-policy.md` | Sanitized or synthetic completion evidence |
 
 ## Required Organizational Policy Artifacts
 

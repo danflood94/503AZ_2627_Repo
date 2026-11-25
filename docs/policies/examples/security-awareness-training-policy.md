@@ -1,4 +1,4 @@
-# Employee Security Awareness and Training Policy — Group Drafting Guide
+# Employee Security Awareness and Training Policy — Group Drafting Example
 
 - **Group policy lead:** To be assigned
 - **Group approval:** To be recorded in the final policy

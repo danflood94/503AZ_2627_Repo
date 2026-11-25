@@ -1,4 +1,4 @@
-# Information Security Policy — Group Drafting Guide
+# Information Security Policy — Group Drafting Example
 
 - **Group policy lead:** To be assigned
 - **Group approval:** To be recorded in the final policy

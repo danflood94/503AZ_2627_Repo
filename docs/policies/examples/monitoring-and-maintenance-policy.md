@@ -1,4 +1,4 @@
-# Monitoring and Maintenance Policy — Group Drafting Guide
+# Monitoring and Maintenance Policy — Group Drafting Example
 
 - **Group policy lead:** To be assigned
 - **Group approval:** To be recorded in the final policy

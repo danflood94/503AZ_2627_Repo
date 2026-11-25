@@ -15,10 +15,10 @@ then complete each policy using the prompts in its linked guide.
 
 | Policy to author | Example elements (adapt, do not copy as a complete policy) | Group completion guidance | Annex A prompts |
 |---|---|---|---|
-| [Information Security Policy](information-security-policy.md) | Commitment to protect in-scope information; assigned security responsibilities | Define scope, objectives, roles, decision-making, exceptions, approval, and review | A.5.1; consider A.5.2 |
-| [Access Control Policy](access-control-policy.md) | Approval before access; review or removal when access is no longer needed | Define access scope, approvers, least-privilege process, review frequency, exceptions, and evidence | A.5.15, A.5.18; consider A.8.2 |
-| [Employee Security Awareness and Training Policy](security-awareness-training-policy.md) | Guidance before access; record whether required training is complete | Define audience, learning goals, timing, refresh triggers, follow-up, and privacy-safe evidence | A.6.3 |
-| [Monitoring and Maintenance Policy](monitoring-and-maintenance-policy.md) | Review selected security events; record maintenance changes | Select relevant events/assets, owners, review/escalation process, maintenance approach, and evidence | A.8.15, A.8.16; consider A.8.8 |
+| [Information Security Policy](examples/information-security-policy.md) | Commitment to protect in-scope information; assigned security responsibilities | Define scope, objectives, roles, decision-making, exceptions, approval, and review | A.5.1; consider A.5.2 |
+| [Access Control Policy](examples/access-control-policy.md) | Approval before access; review or removal when access is no longer needed | Define access scope, approvers, least-privilege process, review frequency, exceptions, and evidence | A.5.15, A.5.18; consider A.8.2 |
+| [Employee Security Awareness and Training Policy](examples/security-awareness-training-policy.md) | Guidance before access; record whether required training is complete | Define audience, learning goals, timing, refresh triggers, follow-up, and privacy-safe evidence | A.6.3 |
+| [Monitoring and Maintenance Policy](examples/monitoring-and-maintenance-policy.md) | Review selected security events; record maintenance changes | Select relevant events/assets, owners, review/escalation process, maintenance approach, and evidence | A.8.15, A.8.16; consider A.8.8 |
 
 Use the Annex A references as prompts, not automatic applicability decisions. The
 team must review the applicable control, justify its decision in the SoA, and
