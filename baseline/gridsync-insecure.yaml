@@ -1,0 +1,289 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  GridSync Energy teaching baseline for AWS Academy Learner Lab (us-east-1).
+  The web portal is intentionally reachable over HTTP from the internet for
+  security assessment. The RDS instance has a public endpoint, with direct
+  database ingress limited to the configured assessment CIDR; review all
+  documented risks before deployment.
+
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Existing EC2 key pair in us-east-1.
+  LabInstanceProfile:
+    Type: String
+    Default: LabInstanceProfile
+    Description: Pre-existing AWS Academy Learner Lab instance profile.
+  AllowedCidr:
+    Type: String
+    Default: 203.0.113.0/24
+    Description: >-
+      Replace with the team's current trusted public IPv4 CIDR (prefer a /32)
+      for bastion SSH access only.
+  DBAccessCidr:
+    Type: String
+    Default: 203.0.113.0/32
+    Description: >-
+      Replace with the authorized tester's current public IPv4 CIDR (prefer a /32)
+      for direct MySQL assessment access. Do not use 0.0.0.0/0.
+  DBMasterPassword:
+    Type: String
+    NoEcho: true
+    MinLength: 14
+    MaxLength: 41
+    AllowedPattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).+$'
+    ConstraintDescription: >-
+      Use 14-41 characters with uppercase, lowercase, numeric, and special characters.
+    Description: Supply a unique strong password at stack creation; do not reuse it.
+
+Resources:
+  GridSyncVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.20.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: GridSync-VPC
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: GridSync-IGW
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref GridSyncVPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref GridSyncVPC
+      CidrBlock: 10.20.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: GridSync-Public-A
+
+  PublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref GridSyncVPC
+      CidrBlock: 10.20.2.0/24
+      AvailabilityZone: !Select [1, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: GridSync-Public-B
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref GridSyncVPC
+      Tags:
+        - Key: Name
+          Value: GridSync-Public-Routes
+
+  DefaultInternetRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VPCGatewayAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetARouteAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnetA
+      RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnetBRouteAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnetB
+      RouteTableId: !Ref PublicRouteTable
+
+  WebSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: GridSync teaching portal; HTTP is internet-reachable for assessment.
+      VpcId: !Ref GridSyncVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: GridSync-Web-SG
+
+  BastionSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: GridSync bastion SSH; ingress limited to the configured client CIDR.
+      VpcId: !Ref GridSyncVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref AllowedCidr
+      Tags:
+        - Key: Name
+          Value: GridSync-Bastion-SG
+
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: MySQL access from the web tier and configured assessment CIDR.
+      VpcId: !Ref GridSyncVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref WebSecurityGroup
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: !Ref DBAccessCidr
+      Tags:
+        - Key: Name
+          Value: GridSync-RDS-SG
+
+  WebInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}'
+      InstanceType: t3.micro
+      KeyName: !Ref KeyName
+      IamInstanceProfile: !Ref LabInstanceProfile
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: '0'
+          GroupSet:
+            - !Ref WebSecurityGroup
+          SubnetId: !Ref PublicSubnetA
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp3
+            Encrypted: true
+            DeleteOnTermination: true
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          dnf install -y nginx
+          systemctl enable --now nginx
+          cat > /usr/share/nginx/html/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head><meta charset="utf-8"><title>GridSync Energy Portal</title></head>
+          <body><h1>GridSync Energy Portal</h1><p>Smart Grid Analytics Platform</p></body>
+          </html>
+          EOF
+      Tags:
+        - Key: Name
+          Value: GridSync-Web
+
+  BastionHost:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}'
+      InstanceType: t3.micro
+      KeyName: !Ref KeyName
+      IamInstanceProfile: !Ref LabInstanceProfile
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: '0'
+          GroupSet:
+            - !Ref BastionSecurityGroup
+          SubnetId: !Ref PublicSubnetA
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp3
+            Encrypted: true
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: GridSync-Bastion
+
+  RDSSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Two-subnet group for the GridSync RDS teaching baseline.
+      SubnetIds:
+        - !Ref PublicSubnetA
+        - !Ref PublicSubnetB
+      Tags:
+        - Key: Name
+          Value: GridSync-RDS-Subnets
+
+  GridSyncDatabase:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: gridsync-db
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: '20'
+      StorageType: gp3
+      StorageEncrypted: true
+      DBName: GridSync
+      MasterUsername: gridsyncadmin
+      MasterUserPassword: !Ref DBMasterPassword
+      PubliclyAccessible: true
+      MultiAZ: false
+      BackupRetentionPeriod: 7
+      VPCSecurityGroups:
+        - !GetAtt RDSSecurityGroup.GroupId
+      DBSubnetGroupName: !Ref RDSSubnetGroup
+      DeletionProtection: false
+
+  GridSyncTelemetry:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: GridSyncTelemetry
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: MeterId
+          AttributeType: S
+        - AttributeName: Timestamp
+          AttributeType: S
+      KeySchema:
+        - AttributeName: MeterId
+          KeyType: HASH
+        - AttributeName: Timestamp
+          KeyType: RANGE
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      Tags:
+        - Key: Name
+          Value: GridSync-Telemetry
+
+Outputs:
+  VPCId:
+    Description: GridSync VPC ID.
+    Value: !Ref GridSyncVPC
+  WebTierPublicIP:
+    Description: Public IPv4 address of the GridSync web instance.
+    Value: !GetAtt WebInstance.PublicIp
+  WebTierURL:
+    Description: Public HTTP URL for the GridSync Energy Portal; do not use with sensitive data.
+    Value: !Sub 'http://${WebInstance.PublicDnsName}'
+  BastionPublicIP:
+    Description: Public IPv4 address of the bastion host; SSH is CIDR-restricted.
+    Value: !GetAtt BastionHost.PublicIp
+  RDSEndpoint:
+    Description: Public GridSync MySQL endpoint; inbound access is CIDR-restricted.
+    Value: !GetAtt GridSyncDatabase.Endpoint.Address
+  DynamoDBTableName:
+    Description: GridSync telemetry table name.
+    Value: !Ref GridSyncTelemetry
