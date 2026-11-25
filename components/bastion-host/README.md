@@ -17,6 +17,16 @@
 | Server | SSH and OS defaults may be insufficiently hardened | Document SSH configuration, updates, host firewall, and logging | `configs/` | `evidence/` | A.8.8 Management of technical vulnerabilities | 12.6.1 Management of technical vulnerabilities |
 | Data | Private keys or session data may be mishandled | Protect credentials and record secure session/log handling | `configs/` | `evidence/` | A.5.17 Authentication information | 9.5.1 Access control |
 
+## Cross-Cutting Policy Controls
+
+These governance and people controls must also be mapped and evidenced; they are
+not replaced by AWS configuration.
+
+| Control | Bastion-tier application | Policy / configuration reference | Evidence reference | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
+|---|---|---|---|---|---|
+| Access control and access rights | Define approval, least privilege, review, and removal for administrative sessions and bastion access | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | `evidence/` access review and sanitized Policy Simulator allow/deny cases | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
+| Security awareness and training | Ensure administrators understand key handling, SSH/session risks, and lab restrictions | `docs/policies/security-awareness-training-policy.md` | `evidence/` sanitized training completion summary | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+
 ## Configuration Maintenance and Checkpoint Log
 
 | Date | Checkpoint | Config File Updated | Summary of Change |

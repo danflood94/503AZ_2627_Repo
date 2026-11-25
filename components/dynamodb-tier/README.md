@@ -17,6 +17,16 @@
 | Server | AWS operates DynamoDB servers and underlying OS | State the AWS Shared Responsibility boundary; do not claim customer OS access | `configs/` | `evidence/` | A.5.23 Information security for use of cloud services | 12.1.5 Administrator's operational security |
 | Data | Point-in-time recovery is disabled in baseline | Assess PITR, encryption, retention, and CloudTrail data events | `configs/` | `evidence/` | A.8.13 Information backup; A.8.15 Logging | 12.3.1 Information backup |
 
+## Cross-Cutting Policy Controls
+
+These governance and people controls must also be mapped and evidenced; they are
+not replaced by AWS configuration.
+
+| Control | DynamoDB-tier application | Policy / configuration reference | Evidence reference | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
+|---|---|---|---|---|---|
+| Access control and access rights | Define approval, least privilege, review, and removal for table and data access | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | `evidence/` access review and sanitized Policy Simulator allow/deny cases | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
+| Security awareness and training | Ensure the owner understands telemetry sensitivity, data access, and the DynamoDB Shared Responsibility boundary | `docs/policies/security-awareness-training-policy.md` | `evidence/` sanitized training completion summary | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+
 ## Configuration Maintenance and Checkpoint Log
 
 | Date | Checkpoint | Config File Updated | Summary of Change |

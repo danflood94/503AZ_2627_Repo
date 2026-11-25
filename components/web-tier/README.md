@@ -17,6 +17,16 @@
 | Server | Web server may be unpatched or over-permissive | Document secure Nginx configuration, patching, and service hardening | `configs/` | `evidence/` | A.8.8 Management of technical vulnerabilities | 12.6.1 Management of technical vulnerabilities |
 | Data | Portal traffic may be observed or altered | Document TLS and data-minimisation controls | `configs/` | `evidence/` | A.8.24 Use of cryptography | 13.1.1 Network controls |
 
+## Cross-Cutting Policy Controls
+
+These governance and people controls must also be mapped and evidenced; they are
+not replaced by AWS configuration.
+
+| Control | Web-tier application | Policy / configuration reference | Evidence reference | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
+|---|---|---|---|---|---|
+| Access control and access rights | Define who may change web configuration and access web-tier resources; apply least privilege to any workload permissions | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | `evidence/` access review and sanitized Policy Simulator allow/deny cases | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
+| Security awareness and training | Ensure the owner understands public HTTP exposure, safe change handling, and secret protection | `docs/policies/security-awareness-training-policy.md` | `evidence/` sanitized training completion summary | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+
 ## Configuration Maintenance and Checkpoint Log
 
 | Date | Checkpoint | Config File Updated | Summary of Change |

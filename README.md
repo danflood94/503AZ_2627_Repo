@@ -37,27 +37,37 @@ diagram as `docs/architecture.png` and update the link if using another path.
 
 ![GridSync hardened architecture diagram](docs/architecture.png)
 
-## Combined Asset-Threat-Vulnerability (ATV) Risk Assessment
+## Risk Assessment and Statement of Applicability
 
-Maintain one consolidated assessment here. Replace the example with assessed,
-component-specific risks and merge each owner's finalized rows before submission.
-
-| Asset | Owner | Threat | Vulnerability | Risk Rating (L/M/H) | Treatment Strategy (Mitigate/Avoid/Transfer/Accept) | Proposed Mitigation | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
-|---|---|---|---|---|---|---|---|---|
-| [EXAMPLE - REPLACE] GridSync web portal | Web tier owner | Unauthorised interception of portal traffic | Baseline serves the portal over HTTP without transport encryption | H | Mitigate | Terminate TLS at a controlled load balancer, redirect HTTP to HTTPS, and validate the deployed configuration | A.8.24 Use of cryptography; A.8.20 Network security | 12.4.1 (Cloud service monitoring); 13.1.1 (Network controls) |
+Maintain the team's consolidated [ATV Risk Assessment](docs/atv-risk-assessment.md)
+and [Statement of Applicability (SoA)](docs/statement-of-applicability.md) as
+separate project records. Replace examples, make applicability decisions, and
+merge each component owner's final risks and control evidence before submission.
 
 ## Individual Ownership and Configuration Rules
 
 - Each student owns an assigned component and maintains its component-level
   ISO/IEC 27001 and ISO/IEC 27017 mapping in that component's `README.md`.
+- The mapping must include organizational and people controls as well as technical
+  controls. Complete the shared [Access Control Policy](docs/policies/access-control-policy.md)
+  and [Security Awareness and Training Policy](docs/policies/security-awareness-training-policy.md),
+  record their applicability and status in the SoA, and reference relevant policies
+  and evidence from each component mapping. These policies are separate from AWS
+  IAM identity, permissions, and resource policies.
+- For IAM policies, use the AWS IAM Policy Simulator for supported allow/deny cases
+  that can be assessed in Learner Lab. Save sanitized inputs and results in the
+  component's `evidence/` folder, including principal, action, resource, expected
+  and simulated decision, date, and any simulator limitations. Do not create IAM
+  users, roles, or instance profiles that the lab blocks. A simulator result is
+  not proof of deployed service behavior.
 - Store and iteratively update real configuration artifacts in
   `components/<component>/configs/`, not just screenshots. Examples include AWS CLI
   scripts, hardened CloudFormation snippets, IAM/resource policies, `nginx.conf`,
   and `sshd_config`. Do not commit credentials, private keys, or other secrets.
 - Store supporting screenshots, command output, and other verification evidence in
   `components/<component>/evidence/`. Redact account identifiers and sensitive data.
-- Before submission, merge each owner's finalized ATV rows into the root table
-  above and replace all allocation/example entries.
+- Before submission, merge each owner's finalized ATV rows into the standalone
+  register and complete the SoA decisions and evidence references.
 
 ## 4-Layer Security Guide (including Shared Responsibility)
 
@@ -74,6 +84,10 @@ configuration artifact for each relevant control.
    AWS operates the underlying host or managed service.
 4. **Data:** Data classification, encryption in transit and at rest, key choices,
    backup/recovery, retention, access, and audit evidence.
+
+Access-control policy, staff/student awareness training, and other organizational
+controls are cross-cutting: map and evidence them alongside the four technical
+layers, rather than omitting them because they are not an AWS configuration.
 
 For **RDS**, AWS manages the underlying host and managed database service
 infrastructure; students should document this Shared Responsibility boundary rather
