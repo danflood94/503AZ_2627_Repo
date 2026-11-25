@@ -10,12 +10,15 @@ it does not replace an organizational policy.
 
 ## Minimum Policy Set
 
-| Policy to author | Minimum topics to address | ISO/IEC 27001:2022 Annex A prompts | Suggested evidence |
+The examples below are starting points only. Adapt one or two example elements,
+then complete each policy using the prompts in its linked guide.
+
+| Policy to author | Example elements (adapt, do not copy as a complete policy) | Group completion guidance | Annex A prompts |
 |---|---|---|---|
-| [Information Security Policy](information-security-policy.md) | Purpose, scope, security objectives, roles, responsibilities, risk/compliance expectations, exceptions, approval and review | A.5.1 Policies for information security; consider A.5.2 Roles and responsibilities | Approved student-authored policy, review record, assigned responsibilities |
-| [Access Control Policy](access-control-policy.md) | Access request/approval, least privilege, access review/removal, privileged access, credentials, exceptions | A.5.15 Access control; A.5.18 Access rights; consider A.8.2 Privileged access rights | Access review record; sanitized IAM Policy Simulator allow/deny cases where supported |
-| [Employee Security Awareness and Training Policy](security-awareness-training-policy.md) | Induction, role-specific training, refreshers, completion tracking, missed-training follow-up | A.6.3 Information security awareness, education and training | Training outline/checklist and sanitized or synthetic completion evidence |
-| [Monitoring and Maintenance Policy](monitoring-and-maintenance-policy.md) | What is monitored, ownership, review frequency, log protection, patch/vulnerability review, maintenance windows, escalation, evidence retention | A.8.15 Logging; A.8.16 Monitoring activities; consider A.8.8 Management of technical vulnerabilities | Sanitized log/monitoring review, maintenance record, vulnerability/patch review |
+| [Information Security Policy](information-security-policy.md) | Commitment to protect in-scope information; assigned security responsibilities | Define scope, objectives, roles, decision-making, exceptions, approval, and review | A.5.1; consider A.5.2 |
+| [Access Control Policy](access-control-policy.md) | Approval before access; review or removal when access is no longer needed | Define access scope, approvers, least-privilege process, review frequency, exceptions, and evidence | A.5.15, A.5.18; consider A.8.2 |
+| [Employee Security Awareness and Training Policy](security-awareness-training-policy.md) | Guidance before access; record whether required training is complete | Define audience, learning goals, timing, refresh triggers, follow-up, and privacy-safe evidence | A.6.3 |
+| [Monitoring and Maintenance Policy](monitoring-and-maintenance-policy.md) | Review selected security events; record maintenance changes | Select relevant events/assets, owners, review/escalation process, maintenance approach, and evidence | A.8.15, A.8.16; consider A.8.8 |
 
 Use the Annex A references as prompts, not automatic applicability decisions. The
 team must review the applicable control, justify its decision in the SoA, and

@@ -8,21 +8,18 @@ This is a drafting guide, not a finished policy. The group should author a
 GridSync-appropriate policy for personnel and project participants, and decide
 what evidence is proportionate to this university project.
 
-## Topics to Address
+## Example Elements — Adapt, Do Not Submit Unchanged
 
-- Who must complete security awareness training, and when (for example, before
-  handling configuration or joining the integration work)?
-- What baseline topics and tier-specific topics are needed? Consider safe Learner
-  Lab use, shared responsibility, public exposure, least privilege, secret handling,
-  evidence redaction, and incident reporting.
-- How are training materials refreshed when the architecture or lab procedures
-  change?
-- How is completion recorded, who reviews it, and how are missed training or
-  exceptions followed up?
+- People receive security guidance before being given project access.
+- The group records whether required training was completed and follows up on gaps.
+
+These examples are not a complete policy. The group must define the audience,
+relevant learning objectives, timing and refresh triggers, completion method,
+responsible reviewer, and response to missed training for its own project.
 
 ## Implementation and Evidence Prompts
 
-Students may use a training outline, checklist, or short briefing and a sanitized
-or synthetic completion summary. Do not commit real personal, employment, or
-student-record data. Link the final policy and evidence in the component mapping
-and SoA under A.6.3.
+Write and approve the final group policy in your own words. Prepare proportionate
+supporting material and sanitized or synthetic completion evidence; do not commit
+real personal, employment, or student-record data. Link shared evidence from the
+SoA and relevant component mappings under A.6.3.

@@ -8,21 +8,20 @@ This is a drafting guide, not a finished policy. The group should define the
 GridSync project's information security direction and responsibilities in their own
 words, consistent with the assessed scope and university requirements.
 
-## Topics to Address
+## Example Elements — Adapt, Do Not Submit Unchanged
 
-- Purpose, scope, objectives, and the kinds of information and services covered.
-- Security roles, decision-making, component ownership, and escalation routes.
-- Risk assessment and treatment expectations, including how the ATV and SoA are
-  maintained.
-- Compliance with relevant module, university, and AWS Academy Learner Lab rules.
-- Protection of credentials, project information, configuration, and evidence.
-- How exceptions are approved, documented, reviewed, and closed.
-- Approval, communication, review frequency, and triggers for an out-of-cycle
-  review.
+- The group commits to protecting information and services within its defined
+  security scope.
+- Named roles are responsible for approving, implementing, and reviewing security
+  decisions.
+
+These examples are not a complete policy. The group must define its scope,
+objectives, responsibilities, risk decision process, exception handling,
+communication, approval, and review triggers in its own words.
 
 ## Implementation and Evidence Prompts
 
-Record the final policy's owner, approver, version, approval date, and review date.
-Link it from the SoA and relevant component mappings. Suitable evidence may include
-the reviewed policy, assigned responsibilities, and review/approval record; avoid
-including personal or confidential information.
+Record the group policy lead, approver, version, approval date, and review date.
+Link the final policy from the SoA and relevant component mappings. Store suitable
+approval/review evidence in `docs/policies/evidence/`; exclude personal or
+confidential information.

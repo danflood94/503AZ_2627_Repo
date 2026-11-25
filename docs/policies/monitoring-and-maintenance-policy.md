@@ -8,22 +8,19 @@ This is a drafting guide, not a finished policy. The group should specify how th
 GridSync project monitors security-relevant activity and maintains its
 configurations and services within Learner Lab capabilities.
 
-## Topics to Address
+## Example Elements — Adapt, Do Not Submit Unchanged
 
-- Which events, logs, service health, and configuration changes are monitored, by
-  whom, and at what review frequency?
-- How are logs protected, retained, reviewed, and escalated without exposing
-  credentials or personal data?
-- How are vulnerabilities and patches assessed, prioritized, tested, and applied?
-- How are maintenance windows, backups, rollback decisions, and changes recorded?
-- Which monitoring/maintenance duties belong to AWS for managed services, and which
-  remain the team's responsibility?
-- What lab limitations affect logging, alerting, patching, or retention, and what
-  compensating evidence can the team provide?
+- Security-relevant events are reviewed by an assigned role at a defined interval.
+- Maintenance changes are recorded and checked after implementation.
+
+These examples are not a complete policy. The group must select relevant events
+and assets, define review ownership and escalation, set maintenance/vulnerability
+handling expectations, and document provider/customer responsibilities and lab
+limitations.
 
 ## Implementation and Evidence Prompts
 
-Identify the relevant configuration artifacts and responsible component owner.
-Evidence can include sanitized log-review records, patch/configuration review,
-change history, or documented service settings. Link evidence from the component
-mapping and SoA, considering Annex A controls A.8.15, A.8.16, and A.8.8.
+Write the final group policy in your own words and identify the applicable
+configuration artifacts. Select evidence that demonstrates the policy is followed,
+such as a sanitized review or maintenance record. Link shared policy evidence and
+tier-specific implementation evidence from the SoA and component mappings.

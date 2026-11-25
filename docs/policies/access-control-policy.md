@@ -8,25 +8,23 @@ This is a drafting guide, not a finished policy. The group should write and appr
 the policy for the GridSync project, using the prompts below and the team's agreed
 scope.
 
-## Topics to Address
+## Example Elements — Adapt, Do Not Submit Unchanged
 
-- Which people, project information, AWS resources, and configuration repositories
-  are in scope?
-- Who may request, approve, implement, review, and revoke access? How are duties
-  separated where practical?
-- How are least privilege, role changes, periodic access reviews, and access
-  removal handled?
-- How are credentials and private keys protected, and how are exceptions approved,
-  time-limited, and reviewed?
-- Which IAM capabilities are available in Learner Lab? Document the existing lab
-  identity/profile and limitations; do not create IAM users, roles, or instance
-  profiles where the lab blocks them.
+- Access to in-scope resources requires approval from an assigned authority and is
+  limited to the permissions needed for the approved task.
+- Access is reviewed when responsibilities change and removed when no longer
+  required.
+
+These are examples, not a complete policy. The group must decide the actual scope,
+roles, approval route, review timing, exception process, and evidence requirements.
+Address the identity and IAM features actually available in the lab; document
+restrictions rather than attempting to bypass them.
 
 ## Implementation and Evidence Prompts
 
-Reference the AWS IAM/resource policies separately from this organizational policy.
-Use the AWS IAM Policy Simulator for supported allow/deny cases and record the
-principal, action, resource, expected and simulated result, policy reference, and
-date. Store sanitized access-review and simulator evidence in the owning component's
-`evidence/` folder; do not include credentials or personal data. Link the final
-policy and evidence in the component mapping and SoA.
+Write the final group policy in your own words, assign its owner and approver, and
+record version and review date. Keep organizational requirements distinct from
+AWS IAM/resource policies. Where supported, test IAM policy decisions using the
+simulator and record the scenario, expected result, outcome, and limitations.
+Reference shared policy evidence in `docs/policies/evidence/` and tier-specific
+policy tests in component evidence. Never include credentials or personal data.
