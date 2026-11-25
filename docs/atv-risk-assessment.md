@@ -3,6 +3,9 @@
 Maintain a single consolidated register here. Component owners should propose
 their rows, agree risk ratings and treatment with the team, then replace the
 example below. Link each row to the relevant component mapping and evidence.
+Assess more than obvious misconfigurations: consider trust boundaries, dependencies,
+misuse and accidental-change scenarios, service availability, monitoring gaps, and
+organizational risks such as unclear approval or insufficient awareness.
 
 | Asset | Owner | Threat | Vulnerability | Risk Rating (L/M/H) | Treatment Strategy (Mitigate/Avoid/Transfer/Accept) | Proposed Mitigation | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
 |---|---|---|---|---|---|---|---|---|
@@ -13,3 +16,9 @@ access alongside weak access approval/review processes, and assess human error
 alongside awareness and training gaps. The linked [Statement of Applicability](statement-of-applicability.md)
 records control applicability and implementation; it does not replace this risk
 register.
+
+Use the L/M/H rating consistently and explain the reasoning in the vulnerability
+and proposed-mitigation fields. Consider confidentiality, integrity, and
+availability impacts, likelihood, affected dependencies, existing controls, and
+residual risk after treatment. Connect proposed mitigations to tested configuration
+and evidence; avoid listing an ISO control number without explaining why it applies.

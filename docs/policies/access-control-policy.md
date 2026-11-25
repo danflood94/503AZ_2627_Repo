@@ -1,34 +1,32 @@
-# GridSync Energy Access Control Policy
+# Access Control Policy — Group Drafting Guide
 
-**Policy owner:** To be assigned  
-**Approver:** To be assigned  
-**Version / review date:** To be completed by the team
+- **Group policy lead:** To be assigned
+- **Group approval:** To be recorded in the final policy
+- **Version / review date:** Complete in the group-authored policy
 
-## Purpose and Scope
+This is a drafting guide, not a finished policy. The group should write and approve
+the policy for the GridSync project, using the prompts below and the team's agreed
+scope.
 
-This policy defines how access to GridSync project information, AWS Learner Lab
-resources, and project configuration is requested, approved, granted, reviewed,
-changed, and removed. It applies to all students and the Integration Lead.
+## Topics to Address
 
-## Policy Requirements
+- Which people, project information, AWS resources, and configuration repositories
+  are in scope?
+- Who may request, approve, implement, review, and revoke access? How are duties
+  separated where practical?
+- How are least privilege, role changes, periodic access reviews, and access
+  removal handled?
+- How are credentials and private keys protected, and how are exceptions approved,
+  time-limited, and reviewed?
+- Which IAM capabilities are available in Learner Lab? Document the existing lab
+  identity/profile and limitations; do not create IAM users, roles, or instance
+  profiles where the lab blocks them.
 
-1. Grant access only to an identified project need and the minimum permissions
-   required for the assigned component.
-2. Record the request, approver, scope, and intended duration before granting
-   access. Separate approval from implementation where the team can do so.
-3. Use only identities and IAM capabilities permitted by AWS Academy Learner Lab.
-   Do not create IAM users, roles, or instance profiles where the lab blocks them;
-   document the pre-existing lab identity/profile and its limitations instead.
-4. Keep credentials and private keys private. Never commit them to the repository
-   or share them in screenshots, policy files, or evidence.
-5. Review access at project checkpoints and when a student's assignment changes or
-   project access is no longer needed. Record the review and any removal or change.
-6. Document exceptions, their rationale, approver, compensating controls, and
-   expiry/review date.
+## Implementation and Evidence Prompts
 
-## Evidence and Review
-
-Record sanitized access decisions and reviews in the relevant component's
-`evidence/` folder. Link the evidence from the component ISO mapping and the
-Statement of Applicability. Review this policy at the project checkpoints and
-before submission.
+Reference the AWS IAM/resource policies separately from this organizational policy.
+Use the AWS IAM Policy Simulator for supported allow/deny cases and record the
+principal, action, resource, expected and simulated result, policy reference, and
+date. Store sanitized access-review and simulator evidence in the owning component's
+`evidence/` folder; do not include credentials or personal data. Link the final
+policy and evidence in the component mapping and SoA.

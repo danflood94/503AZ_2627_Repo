@@ -19,13 +19,16 @@
 
 ## Cross-Cutting Policy Controls
 
-These governance and people controls must also be mapped and evidenced; they are
-not replaced by AWS configuration.
+These are references to the group's shared policies, not separate web-tier policy
+copies. Map the shared controls here and record web-tier-specific implementation
+and evidence.
 
 | Control | Web-tier application | Policy / configuration reference | Evidence reference | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
 |---|---|---|---|---|---|
-| Access control and access rights | Define who may change web configuration and access web-tier resources; apply least privilege to any workload permissions | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | `evidence/` access review and sanitized Policy Simulator allow/deny cases | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
-| Security awareness and training | Ensure the owner understands public HTTP exposure, safe change handling, and secret protection | `docs/policies/security-awareness-training-policy.md` | `evidence/` sanitized training completion summary | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+| Access control and access rights | Apply the group access policy to web configuration and workload permissions | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | Shared approval/review in `docs/policies/evidence/`; tier IAM simulations in `evidence/` | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
+| Security awareness and training | Apply group training expectations to public HTTP exposure, change handling, and secret protection | `docs/policies/security-awareness-training-policy.md` | Shared sanitized training record in `docs/policies/evidence/` | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+| Information security policy | Apply shared security roles and expectations to web-tier work | `docs/policies/information-security-policy.md` | Shared policy approval/review in `docs/policies/evidence/` | A.5.1 Policies for information security | Team to map applicable cloud guidance |
+| Monitoring and maintenance | Apply group monitoring/maintenance process to web logs, configuration, and patch follow-up | `docs/policies/monitoring-and-maintenance-policy.md`; relevant `configs/` | Shared policy plus web-tier monitoring evidence in `evidence/` | A.8.15 Logging; A.8.16 Monitoring activities; A.8.8 Management of technical vulnerabilities | Team to map applicable cloud guidance |
 
 ## Configuration Maintenance and Checkpoint Log
 
@@ -41,3 +44,11 @@ not replaced by AWS configuration.
 - Assess IMDSv2, instance-profile permissions, and security-group scope.
 - Harden Nginx, remove unused services, and document patching and log handling.
 - Keep secrets out of user data and source control; document how the application obtains them.
+
+## Individual Reflection (Phase 3)
+
+Use your evidence to evaluate web-tier confidentiality (traffic and secrets),
+integrity (content/configuration changes), and availability (failure and recovery).
+Critically discuss effectiveness, limitations, and residual risk, supporting
+technical claims with research and APA 7th edition citations. See the
+[assessment alignment guide](../../docs/assessment-guide.md).

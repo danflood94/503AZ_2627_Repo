@@ -2,12 +2,14 @@
 
 ## Purpose and Use
 
-Use this working SoA to record which ISO/IEC 27001:2022 Annex A controls apply to
-the GridSync project, why they apply or do not apply, their implementation status,
-the owner, and evidence. This is a student project record, not a certification or
-claim of compliance. Review the full Annex A control set against the agreed scope;
-the starter rows below are prompts, not a complete control set or predetermined
-applicability decisions.
+Use this working, group-wide SoA to record which ISO/IEC 27001:2022 Annex A controls
+apply to GridSync, why they apply or do not apply, implementation status, owner, and
+evidence. The team maintains one SoA and one shared set of policies; component owners
+contribute tier-specific implementation/evidence references rather than making
+duplicate policies. This is a student project record, not a certification or claim
+of compliance. Review the full Annex A control set against the agreed scope; the
+starter rows are prompts, not a complete control set or predetermined applicability
+decisions.
 
 Every decision must be completed by the team. Do not mark a control implemented
 solely because a policy or AWS configuration file exists: record how it is
@@ -19,6 +21,7 @@ technical AWS/IAM controls.
 
 | ISO/IEC 27001:2022 Annex A control | Applicable? (Yes/No/To assess) | Justification / scope | Implementation status | Owner | Policy/configuration reference | Evidence reference |
 |---|---|---|---|---|---|---|
+| A.5.1 Policies for information security | To assess | Consider project security direction, approval, communication, and review | Not assessed | Team lead | `policies/information-security-policy.md` | Policy approval/review record |
 | A.5.15 Access control | To assess | Decide based on GridSync information, users, and services in scope | Not assessed | Team / component owners | `policies/access-control-policy.md`; component IAM/resource policies | `components/<component>/evidence/` |
 | A.5.18 Access rights | To assess | Consider granting, reviewing, changing, and removing access | Not assessed | Team / component owners | `policies/access-control-policy.md`; component IAM/resource policies | Access review and Policy Simulator records in component `evidence/` |
 | A.6.3 Information security awareness, education and training | To assess | Consider awareness needs for everyone performing GridSync project work | Not assessed | Team lead / all members | `policies/security-awareness-training-policy.md` | Redacted or synthetic completion evidence in component `evidence/` |
@@ -26,17 +29,18 @@ technical AWS/IAM controls.
 | A.8.2 Privileged access rights | To assess | Consider administrative access to the lab and tier resources | Not assessed | Component owners | IAM/resource policies and access procedure | Policy Simulator evidence and access review |
 | A.8.9 Configuration management | To assess | Consider controlled, reviewed, and traceable configuration changes | Not assessed | Component owners | `components/<component>/configs/` | Git history and configuration review evidence |
 | A.8.15 Logging | To assess | Consider recording and protecting relevant security events | Not assessed | Component owners | Service logging configuration and procedures | Sanitized log/configuration evidence |
+| A.8.16 Monitoring activities | To assess | Consider review of security events, service status, and escalation | Not assessed | Component owners | `policies/monitoring-and-maintenance-policy.md`; monitoring configuration | Sanitized monitoring/log review evidence |
+| A.8.8 Management of technical vulnerabilities | To assess | Consider how vulnerabilities and patches are assessed and addressed | Not assessed | Component owners | `policies/monitoring-and-maintenance-policy.md`; maintenance/configuration records | Sanitized patch or vulnerability review evidence |
 | A.8.24 Use of cryptography | To assess | Consider protection of data in transit and at rest | Not assessed | Component owners | TLS, encryption, and key configuration | Sanitized configuration and verification evidence |
 
 ## Required Organizational Policy Artifacts
 
-Complete and review the two policy starters before submission:
-
-- [Access Control Policy](policies/access-control-policy.md): define who may request,
-  approve, receive, review, and revoke access; address least privilege and exceptions.
-- [Security Awareness and Training Policy](policies/security-awareness-training-policy.md):
-  define project-relevant security learning, when it is completed, and how completion
-  is evidenced.
+The team must collaboratively author, review, and approve one group-wide policy
+for each of the four minimum topics in the [policy authoring guide](policies/README.md):
+Information Security, Access Control, Employee Security Awareness and Training,
+and Monitoring and Maintenance. The linked policy files provide prompts only;
+complete them for the project scope and prepare the final policies and evidence for
+the presentation.
 
 These are governance/process controls and are distinct from AWS IAM policies.
 Reference each policy from relevant component mappings and the SoA. Where a policy

@@ -44,16 +44,32 @@ and [Statement of Applicability (SoA)](docs/statement-of-applicability.md) as
 separate project records. Replace examples, make applicability decisions, and
 merge each component owner's final risks and control evidence before submission.
 
+## Assessment Alignment
+
+The assessment weights are Phase 1 **50%**, Phase 2 group presentation **30%**, and
+Phase 3 individual reflective report **20%**. Use the
+[assessment alignment guide](docs/assessment-guide.md) to check that repository
+evidence supports the technical implementation, presentation, and individual
+reflection criteria. Presentation slides and the reflective report should use APA
+7th edition citations and references as required by the module.
+
 ## Individual Ownership and Configuration Rules
 
 - Each student owns an assigned component and maintains its component-level
   ISO/IEC 27001 and ISO/IEC 27017 mapping in that component's `README.md`.
+- The four minimum policies are **group-wide documents**: the team authors and
+  reviews one shared set, assigns a policy lead for each, and prepares the approved
+  versions and concise rationale for the presentation. Do not create a separate
+  copy of each policy in every component. Component owners reference the shared
+  policies and document their tier-specific implementation and evidence.
 - The mapping must include organizational and people controls as well as technical
-  controls. Complete the shared [Access Control Policy](docs/policies/access-control-policy.md)
-  and [Security Awareness and Training Policy](docs/policies/security-awareness-training-policy.md),
-  record their applicability and status in the SoA, and reference relevant policies
-  and evidence from each component mapping. These policies are separate from AWS
-  IAM identity, permissions, and resource policies.
+  controls. Students must author at least the four policies in the
+  [policy authoring guide](docs/policies/README.md): Information Security, Access
+  Control, Employee Security Awareness and Training, and Monitoring and Maintenance.
+  The linked policy files are drafting prompts, not completed policies. Record
+  group-wide applicability/status in the SoA and reference relevant policy and
+  tier-specific evidence from each component mapping. Organizational policies are
+  separate from AWS IAM identity, permissions, and resource policies.
 - For IAM policies, use the AWS IAM Policy Simulator for supported allow/deny cases
   that can be assessed in Learner Lab. Save sanitized inputs and results in the
   component's `evidence/` folder, including principal, action, resource, expected
@@ -66,6 +82,8 @@ merge each component owner's final risks and control evidence before submission.
   and `sshd_config`. Do not commit credentials, private keys, or other secrets.
 - Store supporting screenshots, command output, and other verification evidence in
   `components/<component>/evidence/`. Redact account identifiers and sensitive data.
+- Store shared policy approval, review, and sanitized group training evidence in
+  `docs/policies/evidence/`; keep tier-specific technical evidence with its component.
 - Before submission, merge each owner's finalized ATV rows into the standalone
   register and complete the SoA decisions and evidence references.
 
@@ -110,7 +128,7 @@ does not replace least-privilege policies.
 - **End of Week 3:** Initial ATV risk assessment matrix and component allocation.
 - **Start of Week 5:** Network and Instance layer configuration artifacts committed.
 - **Early Week 6:** Server and Data layer configuration artifacts committed; ready
-  to present.
+  to present. Complete the integrated demonstration and presentation materials.
 - **Phase 1 Repo Submission:** Monday of Week 6 at 18:00.
 
 ## AWS Learner Lab Group Workflow

@@ -1,33 +1,28 @@
-# GridSync Energy Security Awareness and Training Policy
+# Employee Security Awareness and Training Policy — Group Drafting Guide
 
-**Policy owner:** To be assigned  
-**Approver:** To be assigned  
-**Version / review date:** To be completed by the team
+- **Group policy lead:** To be assigned
+- **Group approval:** To be recorded in the final policy
+- **Version / review date:** Complete in the group-authored policy
 
-## Purpose and Scope
+This is a drafting guide, not a finished policy. The group should author a
+GridSync-appropriate policy for personnel and project participants, and decide
+what evidence is proportionate to this university project.
 
-This policy defines security awareness and project-specific training for everyone
-working on the GridSync project. It covers safe use of AWS Academy Learner Lab,
-source control, configuration artifacts, credentials, and evidence.
+## Topics to Address
 
-## Policy Requirements
+- Who must complete security awareness training, and when (for example, before
+  handling configuration or joining the integration work)?
+- What baseline topics and tier-specific topics are needed? Consider safe Learner
+  Lab use, shared responsibility, public exposure, least privilege, secret handling,
+  evidence redaction, and incident reporting.
+- How are training materials refreshed when the architecture or lab procedures
+  change?
+- How is completion recorded, who reviews it, and how are missed training or
+  exceptions followed up?
 
-1. Complete project security induction before handling project configurations or
-   using the integration lab. The induction should cover the shared responsibility
-   model, least privilege, public exposure risks, secret handling, and safe evidence
-   capture.
-2. Provide role-specific guidance for each tier, including its network and data
-   risks, the applicable AWS service boundary, and escalation/reporting steps.
-3. Refresh the guidance when material architecture or lab procedures change and at
-   the Week 5 / Week 6 project checkpoints.
-4. Record the training topic, date, delivery method, and completion status. Use
-   synthetic or redacted records in this repository; do not commit personal data.
-5. Address missed training before granting the relevant project access, and record
-   any agreed exception and follow-up action.
+## Implementation and Evidence Prompts
 
-## Evidence and Review
-
-Store a sanitized training checklist, agenda, or completion summary in the relevant
-component's `evidence/` folder. Link it from the component ISO mapping and the
-Statement of Applicability. Review this policy at the project checkpoints and
-before submission.
+Students may use a training outline, checklist, or short briefing and a sanitized
+or synthetic completion summary. Do not commit real personal, employment, or
+student-record data. Link the final policy and evidence in the component mapping
+and SoA under A.6.3.

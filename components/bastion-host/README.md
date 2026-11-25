@@ -19,13 +19,16 @@
 
 ## Cross-Cutting Policy Controls
 
-These governance and people controls must also be mapped and evidenced; they are
-not replaced by AWS configuration.
+These are references to the group's shared policies, not separate bastion policy
+copies. Map the shared controls here and record bastion-specific implementation
+and evidence.
 
 | Control | Bastion-tier application | Policy / configuration reference | Evidence reference | ISO/IEC 27001 Annex A | ISO/IEC 27017 |
 |---|---|---|---|---|---|
-| Access control and access rights | Define approval, least privilege, review, and removal for administrative sessions and bastion access | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | `evidence/` access review and sanitized Policy Simulator allow/deny cases | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
-| Security awareness and training | Ensure administrators understand key handling, SSH/session risks, and lab restrictions | `docs/policies/security-awareness-training-policy.md` | `evidence/` sanitized training completion summary | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+| Access control and access rights | Apply group approval, least privilege, review, and removal expectations to administrative access | `docs/policies/access-control-policy.md`; relevant `configs/` IAM/resource policies | Shared approval/review in `docs/policies/evidence/`; tier IAM simulations in `evidence/` | A.5.15 Access control; A.5.18 Access rights | Team to map applicable cloud guidance |
+| Security awareness and training | Apply group training expectations to key handling, SSH/session risks, and lab restrictions | `docs/policies/security-awareness-training-policy.md` | Shared sanitized training record in `docs/policies/evidence/` | A.6.3 Information security awareness, education and training | Team to map applicable cloud guidance |
+| Information security policy | Apply shared security roles and secure-use expectations to bastion administration | `docs/policies/information-security-policy.md` | Shared policy approval/review in `docs/policies/evidence/` | A.5.1 Policies for information security | Team to map applicable cloud guidance |
+| Monitoring and maintenance | Apply group process to SSH/authentication review, OS updates, and vulnerability follow-up | `docs/policies/monitoring-and-maintenance-policy.md`; relevant `configs/` | Shared policy plus bastion monitoring evidence in `evidence/` | A.8.15 Logging; A.8.16 Monitoring activities; A.8.8 Management of technical vulnerabilities | Team to map applicable cloud guidance |
 
 ## Configuration Maintenance and Checkpoint Log
 
@@ -41,3 +44,11 @@ not replaced by AWS configuration.
 - Assess AWS Systems Manager Session Manager as an alternative to inbound SSH, subject to lab permissions.
 - Disable password-based SSH, enforce key-based access, and document `sshd_config` hardening.
 - Review IMDSv2, patching, audit logs, session recording options, and key handling.
+
+## Individual Reflection (Phase 3)
+
+Use your evidence to evaluate bastion confidentiality (sessions and keys), integrity
+(administrative actions and auditability), and availability (authorized management
+access and recovery). Critically discuss effectiveness, limitations, and residual
+risk, supporting claims with research and APA 7th edition citations. See the
+[assessment alignment guide](../../docs/assessment-guide.md).
